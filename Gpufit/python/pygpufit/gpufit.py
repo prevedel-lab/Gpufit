@@ -21,7 +21,17 @@ elif os.name == 'posix':
 else:
     raise RuntimeError('OS {} not supported by pyGpufit.'.format(os.name))
 
+cuda_path = None
+# add CUDA_PATH to the dll search path
+if os.name == 'nt' and hasattr(os, 'add_dll_directory') and 'CUDA_PATH' in os.environ:    
+    cuda_path = os.add_dll_directory(
+        os.path.join(os.environ['CUDA_PATH'], 'bin'))
+# load the GpuFit library
 lib = cdll.LoadLibrary(lib_path)
+# remove CUDA_PATH from the dll search path
+if cuda_path is not None:
+    cuda_path.close()
+del cuda_path
 
 # gpufit_constrained function in the dll
 gpufit_func = lib.gpufit_constrained
