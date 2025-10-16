@@ -17,6 +17,10 @@
 #include "spline_3d_phase_multichannel.cuh"
 #include "spline_4d.cuh"
 #include "spline_5d.cuh"
+#include "anti_stokes.cuh"
+#include "stokes.cuh"
+#include "poly2.cuh"
+#include "cauchy_lorentz_1d.cuh"
 
 __device__ void calculate_model(
     ModelID const model_id,
@@ -77,6 +81,18 @@ __device__ void calculate_model(
         break;
     case SPLINE_5D:
         calculate_spline5d(parameters, n_fits, n_points, value, derivative, point_index, fit_index, chunk_index, user_info, user_info_size);
+    //Custom added Functions
+    case ANTI_STOKES:
+        calculate_anti_stokes(parameters, n_fits, n_points, value, derivative, point_index, fit_index, chunk_index, user_info, user_info_size);
+        break;
+    case CAUCHY_LORENTZ_1D:
+        calculate_cauchy_lorentz_1d(parameters, n_fits, n_points, value, derivative, point_index, fit_index, chunk_index, user_info, user_info_size);
+        break;
+    case POLY2:
+        calculate_poly2(parameters, n_fits, n_points, value, derivative, point_index, fit_index, chunk_index, user_info, user_info_size);
+        break;
+    case STOKES:
+        calculate_stokes(parameters, n_fits, n_points, value, derivative, point_index, fit_index, chunk_index, user_info, user_info_size);
         break;
     default:
         assert(0); // unknown model ID
@@ -102,6 +118,11 @@ void configure_model(ModelID const model_id, int & n_parameters, int & n_dimensi
     case SPLINE_3D_PHASE_MULTICHANNEL:   n_parameters = 6; n_dimensions = 4; break;
     case SPLINE_4D:             n_parameters = 6; n_dimensions = 4; break;
     case SPLINE_5D:             n_parameters = 7; n_dimensions = 5; break;
+    //Custom added Functions
+    case STOKES:                n_parameters = 4; n_dimensions = 1; break;
+    case ANTI_STOKES:           n_parameters = 4; n_dimensions = 1; break;
+    case POLY2:                 n_parameters = 3; n_dimensions = 1; break;
+    case CAUCHY_LORENTZ_1D:     n_parameters = 4; n_dimensions = 1; break;
     default: throw std::runtime_error("unknown model ID");
     }
 }

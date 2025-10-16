@@ -19,6 +19,10 @@ enum ModelID {
     SPLINE_3D_PHASE_MULTICHANNEL = 12,
     SPLINE_4D = 13,
     SPLINE_5D = 14
+    ANTI_STOKES = 15,
+    STOKES = 16,
+    POLY2 = 17,
+    CAUCHY_LORENTZ_1D = 18
 };
 
 // estimator ID
