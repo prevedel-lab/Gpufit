@@ -1,4 +1,3 @@
-
 # CUDA
 #
 # Uses the following variables:
@@ -89,18 +88,6 @@ elseif( CUDA_ARCHITECTURES STREQUAL All )
     list( INSERT CUDA_ARCHITECTURES 0 "2.0" "2.1(2.0)" )
   endif()
   
-  if( CUDA_VERSION VERSION_GREATER "6.5" )
-      list( APPEND CUDA_ARCHITECTURES "5.3" )
-  endif()
-  
-  if( CUDA_VERSION VERSION_GREATER "7.5" )
-    list( APPEND CUDA_ARCHITECTURES "6.0" "6.1" )
-  endif()
-  
-  if( CUDA_VERSION VERSION_GREATER "8.0" )
-    list( APPEND CUDA_ARCHITECTURES "7.0" "7.2")
-  endif()
-  
   if( CUDA_VERSION VERSION_GREATER "9.2" )
     list( APPEND CUDA_ARCHITECTURES "7.5" )
   endif()
@@ -111,6 +98,14 @@ elseif( CUDA_ARCHITECTURES STREQUAL All )
   
   if( CUDA_VERSION VERSION_GREATER "11.0" )
     list( APPEND CUDA_ARCHITECTURES "8.6" )
+  endif()
+
+  if( CUDA_VERSION VERSION_GREATER "12.0" )
+    list( APPEND CUDA_ARCHITECTURES "8.9" )
+  endif()
+
+  if( CUDA_VERSION VERSION_GREATER "13.0" )
+    list( APPEND CUDA_ARCHITECTURES "9.0" )
   endif()
   
   string( APPEND CUDA_ARCHITECTURES "+PTX" )
