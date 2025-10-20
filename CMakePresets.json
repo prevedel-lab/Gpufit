@@ -1,0 +1,30 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 21
+  },
+  "configurePresets": [
+    {
+      "name": "x64-CUBLAS",
+      "displayName": "x64 with cuBLAS",
+      "generator": "Visual Studio 17 2022",
+      "architecture": {
+        "value": "x64"
+      },
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "USE_CUBLAS": "True"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "x64-CUBLAS-Release",
+      "configurePreset": "x64-CUBLAS",
+      "configuration": "Release",
+      "verbose": true,
+      "targets": [ "ALL_BUILD" ]
+    }
+  ]
+}
