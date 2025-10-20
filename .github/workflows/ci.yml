@@ -12,8 +12,8 @@ jobs:
         # `include` will only run specific combinations (not permutations of these)
         include:
           - os: windows-2022
-            cuda: "11.4.0"
-            visual_studio: "Visual Studio 16 2019"
+            cuda: "12.4.0"
+            visual_studio: "Visual Studio 19.4 2022"
             python: "3.9"
           - os: ubuntu-20.04
             cuda: "11.4.0"
