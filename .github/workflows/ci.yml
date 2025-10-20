@@ -15,9 +15,6 @@ jobs:
             cuda: "12.4.0"
             visual_studio: "Visual Studio 19.4 2022"
             python: "3.9"
-          - os: ubuntu-20.04
-            cuda: "11.4.0"
-            python: "3.9"
 
     env:
       build_dir: "build"
@@ -106,10 +103,6 @@ jobs:
         working-directory: ${{ env.build_dir }}
         run: cmake --build . --config ${{ env.config }} --target ALL_BUILD --verbose
 
-      - name: Build (Linux)
-        if: runner.os == 'Linux'
-        working-directory: ${{ env.build_dir }}
-        run: make
 
       - name: Upload Artifacts (Windows)
         uses: actions/upload-artifact@v4
@@ -117,10 +110,3 @@ jobs:
         with:
           name: ${{ matrix.os }}-x64-cuda-${{ matrix.cuda }}
           path: build/Release/**/*
-
-      - name: Upload Artifacts (Linux)
-        uses: actions/upload-artifact@v4
-        if: runner.os == 'Linux'
-        with:
-          name: ${{ matrix.os }}-x64-cuda-${{ matrix.cuda }}
-          path: build/**/*
