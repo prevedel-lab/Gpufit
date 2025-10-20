@@ -13,7 +13,7 @@ jobs:
         include:
           - os: windows-2022
             cuda: "12.4.0"
-            visual_studio: "Visual Studio 19.4 2022"
+            visual_studio: "Visual Studio 17 2022"
             python: "3.9"
 
     env:
