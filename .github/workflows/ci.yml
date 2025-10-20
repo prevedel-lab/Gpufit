@@ -1,7 +1,6 @@
 name: Build
 
 on:
-  push:
   workflow_dispatch:
 
 jobs:
@@ -12,7 +11,7 @@ jobs:
       matrix:
         # `include` will only run specific combinations (not permutations of these)
         include:
-          - os: windows-2019
+          - os: windows-2022
             cuda: "11.4.0"
             visual_studio: "Visual Studio 16 2019"
             python: "3.9"
