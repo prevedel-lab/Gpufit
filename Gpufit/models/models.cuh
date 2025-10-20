@@ -21,6 +21,7 @@
 #include "stokes.cuh"
 #include "poly2.cuh"
 #include "cauchy_lorentz_1d.cuh"
+#include "time_domain_lorentz_1d.cuh"
 
 __device__ void calculate_model(
     ModelID const model_id,
@@ -87,6 +88,9 @@ __device__ void calculate_model(
         break;
     case CAUCHY_LORENTZ_1D:
         calculate_cauchy_lorentz_1d(parameters, n_fits, n_points, value, derivative, point_index, fit_index, chunk_index, user_info, user_info_size);
+        break;
+    case TIME_DOMAIN_LORENTZ_1D:
+        calculate_time_domain_lorentz_1d(parameters, n_fits, n_points, value, derivative, point_index, fit_index, chunk_index, user_info, user_info_size);
         break;
     case POLY2:
         calculate_poly2(parameters, n_fits, n_points, value, derivative, point_index, fit_index, chunk_index, user_info, user_info_size);
