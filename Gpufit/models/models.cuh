@@ -127,6 +127,7 @@ void configure_model(ModelID const model_id, int & n_parameters, int & n_dimensi
     case ANTI_STOKES:           n_parameters = 4; n_dimensions = 1; break;
     case POLY2:                 n_parameters = 3; n_dimensions = 1; break;
     case CAUCHY_LORENTZ_1D:     n_parameters = 4; n_dimensions = 1; break;
+    case TIME_DOMAIN_LORENTZ_1D:n_parameters = 4; n_dimensions = 1; break;
     default: throw std::runtime_error("unknown model ID");
     }
 }
