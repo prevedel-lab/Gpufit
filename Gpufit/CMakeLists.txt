@@ -241,5 +241,5 @@ endif()
 
 add_subdirectory( matlab )
 add_subdirectory( python )
-add_subdirectory( java )
+# add_subdirectory( java )
 
