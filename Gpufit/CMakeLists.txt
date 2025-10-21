@@ -193,9 +193,9 @@ if( CMAKE_SIZEOF_VOID_P EQUAL 8 AND CUDA_VERSION VERSION_GREATER "6.5")
 	if( USE_CUBLAS )
         if ( WIN32 )
 	    if( CMAKE_SIZEOF_VOID_P EQUAL 8 AND CUDA_VERSION VERSION_GREATER_EQUAL "10")
-                set( CUBLAS_DLL "${CUDA_TOOLKIT_ROOT_DIR}/bin/cublas64_${CUDA_VERSION_MAJOR}.dll" )
+                set( CUBLAS_DLL "${CUDA_TOOLKIT_ROOT_DIR}/bin/x64/cublas64_${CUDA_VERSION_MAJOR}.dll" )
 	    else()
-		set( CUBLAS_DLL "${CUDA_TOOLKIT_ROOT_DIR}/bin/cublas64_${CUDA_VERSION_MAJOR}${CUDA_VERSION_MINOR}.dll" )
+		set( CUBLAS_DLL "${CUDA_TOOLKIT_ROOT_DIR}/bin/x64/cublas64_${CUDA_VERSION_MAJOR}${CUDA_VERSION_MINOR}.dll" )
 	    endif()
             add_custom_command( TARGET Gpufit POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E
